@@ -9,10 +9,10 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LeadController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PropertyController;
-use App\Http\Controllers\PropertyDetailsController;
+use App\Http\Controllers\propertyDetailsController;
 
 // Home Route
-Route::get('/', [PropertyDetailsController::class, 'get_property'])->name('welcome');
+Route::get('/', [propertyDetailsController::class, 'get_property'])->name('welcome');
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 // Package Routes
 Route::get('/package', function () {
@@ -41,7 +41,7 @@ Route::get('/Property-Lead', function () {
 });
 
 
-Route::get('/all-properties', [PropertyDetailsController::class, 'index'])->name('allproperties');
+Route::get('/all-properties', [propertyDetailsController::class, 'index'])->name('allproperties');
 Route::resource('properties', PropertyController::class);
 Route::resource('lead', LeadController::class);
 
