@@ -225,13 +225,7 @@
                                     min="0" placeholder="Enter square footage">
                             </div>
                         </div>
-                        {{-- <div class="col">
-                                <div class="form-group">
-                                    <label for="propertyPrice"><b class="text-dark">Property Price</b></label>
-                                    <input type="text" name="propertyPrice" id="propertyPrice" class="form-control"
-                                        required min="0" placeholder="Enter price">
-                                </div>
-                            </div> --}}
+                        
                         <div class="col">
                             <div class="form-group">
                                 <label for="propertyFor"><b class="text-dark">Property For</b></label>
@@ -241,6 +235,7 @@
                                     <option value="Sell">Sell</option>
                                 </select>
                             </div>
+                            </div>                    
                         </div>
                     </div>
                     <div class="row mb-3">
