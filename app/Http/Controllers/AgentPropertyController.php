@@ -98,15 +98,18 @@ class AgentPropertyController extends Controller
     {
         $property = Property::findOrFail($id);
         
-        $request->validate([
-            'propertyName' => 'required|string|max:255',
+        $validated = $request->validate([
             'propertyType' => 'required|string|max:255',
             'propertyPrice' => 'required|numeric',
-            'location' => 'required|string|max:255',
-            'squareFit' => 'required|integer|min:0',
-            'bedNumber' => 'required|integer|min:0',
-            'bathNumber' => 'required|integer|min:0',
+            'propertyName' => 'required|string|max:255',
+            'state' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
+            'squareFit' => 'required|integer',
+            'bedNumber' => 'required|integer',
+            'bathNumber' => 'required|integer',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'delete_images' => 'array',
         ]);
 
         // Update the property without the images

@@ -58,6 +58,7 @@
                                         <th>Bath</th>
                                         <th>Bed</th>
                                         <th>Images</th>
+                                        <th>Property For</th>
                                         <th colspan="2" class="text-center">Action</th>
                                     </tr>
                                 </thead>
@@ -91,6 +92,8 @@
                                                         <p>No image available</p>
                                                     @endif
                                                 </td>
+                                                <td class="text-white">{{ $property->propertyFor }}</td>
+
                                                 <td class="text-end">
                                                     <button class="btn btn-primary" data-bs-toggle="modal"
                                                         data-bs-target="#editPropertyModal" data-id="{{ $property->id }}"
@@ -103,6 +106,7 @@
                                                         data-square="{{ $property->squareFit }}"
                                                         data-bed="{{ $property->bedNumber }}"
                                                         data-bath="{{ $property->bathNumber }}"
+                                                        data-For="{{ $property->propertyFor }}"
                                                         onclick="editProperty(this)">
                                                         <i class="bi bi-pencil-square text-white"></i>
                                                     </button>
@@ -218,21 +222,24 @@
                             <div class="form-group">
                                 <label for="squareFit"><b class="text-dark">Area (sq ft)</b></label>
                                 <input type="number" name="squareFit" id="squareFit" class="form-control" required
-                                min="0" placeholder="Enter square footage">
+                                    min="0" placeholder="Enter square footage">
                             </div>
-                            <div class="col">
+                        </div>
+                        {{-- <div class="col">
                                 <div class="form-group">
                                     <label for="propertyPrice"><b class="text-dark">Property Price</b></label>
                                     <input type="text" name="propertyPrice" id="propertyPrice" class="form-control"
                                         required min="0" placeholder="Enter price">
                                 </div>
-                            </div>
-                            <div class="col">
-                                <div class="form-group">
-                                    <label for="propertyFor"><b class="text-dark">Property Price</b></label>
-                                    <input type="text" name="propertyFor" id="propertyFor" class="form-control"
-                                        required  placeholder="For Rent">
-                                </div>
+                            </div> --}}
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="propertyFor"><b class="text-dark">Property For</b></label>
+                                <select name="propertyFor" id="propertyFor" class="form-select" required>
+                                    <option value="">Property For</option>
+                                    <option value="Rent">Rent</option>
+                                    <option value="Sell">Sell</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -305,6 +312,10 @@
                                 required>
                         </div>
                         <div class="mb-3">
+                            <label for="editPropertyFor" class="form-label text-dark">Property For</label>
+                            <input type="text" class="form-control" id="editPropertyFor" name="propertyFor" required>
+                        </div>
+                        <div class="mb-3">
                             <label for="editSquareFit" class="form-label text-dark">Square Fit</label>
                             <input type="number" class="form-control" id="editSquareFit" name="squareFit" required>
                         </div>
@@ -345,7 +356,8 @@
                 propertyPrice: button.getAttribute('data-price'),
                 squareFit: button.getAttribute('data-square'),
                 bedNumber: button.getAttribute('data-bed'),
-                bathNumber: button.getAttribute('data-bath')
+                bathNumber: button.getAttribute('data-bath'),
+                propertyFor: button.getAttribute('data-For')
             };
 
             // Populate the modal fields
@@ -359,6 +371,7 @@
             document.getElementById('editSquareFit').value = property.squareFit;
             document.getElementById('editBedNumber').value = property.bedNumber;
             document.getElementById('editBathNumber').value = property.bathNumber;
+            document.getElementById('editPropertyFor').value = property.propertyFor;
 
             // Set the form action for updating
             document.getElementById('editPropertyForm').action = `/properties/${property.id}`;

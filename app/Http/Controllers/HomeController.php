@@ -12,7 +12,7 @@ class HomeController extends Controller
     {
         $usertype = Auth::user()->usertype;
         if ($usertype == 'admin') {
-            return view('admin.adminheader');
+            return view('admin.adminHeader');
         } else {
             return view('agent.agentdashboard');
         }
