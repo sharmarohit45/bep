@@ -84,9 +84,3 @@ Route::post('/search', [PropertyController::class, 'search'])->name('search');
 Route::get('/rent', [PropertyController::class, 'getPropertiesForRent']);
 Route::get('/buy', [PropertyController::class, 'getPropertiesForSell']);
 Route::get('/Leads', [LeadController::class, 'LeadDetails']);
-
-
-
-
-
-
